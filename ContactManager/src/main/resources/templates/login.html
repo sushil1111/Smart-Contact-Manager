@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+	th:replace="base::layout(~{::section})">
+<head>
+<link rel="stylesheet" th:href="@{/css/sign.css}">
+<title>CSS Login Screen Tutorial</title>
+</head>
+<body>
+	<section class="banner d-flex">
+		<div class="login-page">
+			<div class="form">
+				<div class="login">
+					<div class="login-header">
+						<h3>LOGIN</h3>
+						<p>Please enter your credentials to login.</p>
+					</div>
+				</div>
+				<form class="login-form" th:action="@{/dologin}" method="post">
+					<div class="alert alert-danger" role="alert" th:if="${param.error}">
+						Invalid Credentials</div>
+					<div class="alert alert-success" role="alert" th:if="${param.logout}">
+						You have been logged out</div>
+						
+					<input type="text" placeholder="username" name="username" id="username"/> 
+					<input
+						type="password" placeholder="password" name="password" id="password"/>
+					<button type="submit" value="submit">login</button>
+					<p class="message">
+						Not registered? <a href="/signup">Create an account</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
